@@ -2,19 +2,34 @@ namespace Estudo_Aprofundamento_POO.Domain.Contas
 {
     public abstract class Conta : IConta
     {
+        public enum TipoConta
+        {
+            Corrente,
+            Poupanca
+        }
+
+        public int IdCliente { get; private set; }
+        public TipoConta Tipo {get; private set;}
         public string Numero { get; private set; }
         public string Agencia { get; private set; }
-        public int IdCliente { get; private set; }
         public List<Transacao> Transacoes { get; private set; }
         public double Saldo { get; protected set; }
 
-        protected Conta(int idCliente, string numero, string agencia)
+        protected Conta(int idCliente, string numero, string agencia, TipoConta tipo)
         {
             this.IdCliente = idCliente;
             this.Numero = numero;
             this.Agencia = agencia;
             this.Saldo = 0;
+            this.Tipo = tipo;
             this.Transacoes = new List<Transacao>();
+        }
+
+        protected Conta(int idCliente, string numero, string agencia)
+        {
+            IdCliente = idCliente;
+            Numero = numero;
+            Agencia = agencia;
         }
 
         public virtual string Depositar(float valor)

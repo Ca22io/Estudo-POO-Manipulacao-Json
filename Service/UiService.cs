@@ -1,3 +1,6 @@
+using Estudo_Aprofundamento_POO.Domain;
+using Estudo_Aprofundamento_POO.Domain.Contas;
+
 namespace Estudo_Aprofundamento_POO.Service
 {
     public class UIService : IUiService
@@ -22,6 +25,15 @@ namespace Estudo_Aprofundamento_POO.Service
                 Console.Write("Digite a Data de Nascimento (DD/MM/AAAA): ");
                 string dataNascimento = Console.ReadLine();
 
+                Cliente cliente = new Cliente
+                {
+                    CPF = cpf,
+                    Nome = nome,
+                    DataNascimento = DateOnly.ParseExact(dataNascimento, "dd-MM-yyyy")
+                };
+
+                cliente.IdCliente = Cliente.GerarId();
+
                 Console.WriteLine();
                 Console.WriteLine("--- Dados da Conta ---");
 
@@ -37,52 +49,20 @@ namespace Estudo_Aprofundamento_POO.Service
                 Console.Write("Digite sua opção (1 ou 2): ");
                 string tipoContaOpcao = Console.ReadLine();
 
-                // -----------------------------------------------------------------
-                // AQUI VOCÊ DEVE CHAMAR SEUS SERVIÇOS DE APLICAÇÃO
-                // (Ex: clienteService.CriarOuBuscarCliente(...), contaService.CriarConta(...))
-                // -----------------------------------------------------------------
-
-                // Exemplo de como a lógica de chamada seria:
-                /*
-                
-                // 1. Validações simples (faça validações melhores nos seus serviços)
-                if (string.IsNullOrEmpty(cpf) || string.IsNullOrEmpty(nome) || string.IsNullOrEmpty(agencia) || string.IsNullOrEmpty(numeroConta))
-                {
-                    throw new Exception("Todos os campos são obrigatórios.");
-                }
-
-                // 2. (Simulação) Chama os serviços para criar as entidades
-                // Cliente novoCliente = clienteService.CriarCliente(cpf, nome, dataNascimento);
-                
-                string tipoDescricao;
-                
                 if (tipoContaOpcao == "1")
                 {
-                    // contaService.CriarContaCorrente(novoCliente.Id, numeroConta, agencia);
-                    tipoDescricao = "Conta Corrente";
-                }
-                else if (tipoContaOpcao == "2")
-                {
-                    // A Poupança precisa da taxa, vamos definir uma padrão por enquanto
-                    float taxaPadrao = 0.005f; // 0.5%
-                    // contaService.CriarContaPoupanca(novoCliente.Id, numeroConta, agencia, taxaPadrao);
-                    tipoDescricao = "Conta Poupança";
-                }
-                else
-                {
-                    throw new Exception("Tipo de conta inválido.");
-                }
-                */
+                    ContaCorrente conta = new ContaCorrente
+                    {
+                        Agencia = agencia,
+                        Numero = 1223122,
 
-                // -----------------------------------------------------------------
-                // 4. Mensagem de Sucesso (simulada)
-                // Remova a linha abaixo quando implementar a lógica real
-                string tipoDescricao = (tipoContaOpcao == "1") ? "Conta Corrente" : "Conta Poupança";
-                // -----------------------------------------------------------------
+
+                    };
+                }
 
                 Console.WriteLine();
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine($"SUCESSO: {tipoDescricao} (Nº {numeroConta}) criada para o cliente {nome}.");
+                Console.WriteLine($"SUCESSO: {tipo} (Nº {numeroConta}) criada para o cliente {nome}.");
                 Console.ResetColor();
 
                 PausarEVoltar();

@@ -6,5 +6,12 @@ namespace Estudo_Aprofundamento_POO.Domain
         public required string CPF { get; set; }
         public required string Nome { get; set; }
         public DateOnly DataNascimento { get; set; }
+
+        public static int GerarId()
+        {
+            int id = 1;
+
+            return id;
+        }
     }
 }

@@ -3,7 +3,7 @@ namespace Estudo_Aprofundamento_POO.Domain.Contas
 {
     public class ContaPoupanca : Conta
     {
-        public ContaPoupanca(int idCliente, string numero, string agencia) : base(idCliente, numero, agencia)
+        public ContaPoupanca(int idCliente, string numero, string agencia, TipoConta tipo) : base(idCliente, numero, agencia, tipo)
         {
         }
 
