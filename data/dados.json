@@ -1,0 +1,10 @@
+[
+  {
+    "$type": "App.Models.Filme, App",
+    "Titulo": "Filme de teste"
+  },
+  {
+    "$type": "App.Models.Filme, App",
+    "Titulo": "Filme de teste"
+  }
+]
