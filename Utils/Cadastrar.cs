@@ -13,7 +13,7 @@ namespace App.Utils
             Console.WriteLine("2- Série");
             Console.WriteLine("0- Voltar");
             Console.WriteLine("Qual deseja cadastrar?");
-            string opcao = Console.ReadLine();
+            string? opcao = Console.ReadLine();
 
             switch (opcao)
             {
@@ -45,17 +45,17 @@ namespace App.Utils
         {
             Console.WriteLine("--------- Cadastro de Filme ---------");
             Console.WriteLine("Titulo: ");
-            string titulo = Console.ReadLine();
+            string? titulo = Console.ReadLine();
 
             Console.WriteLine("Duracao em minutos: ");
-            string duracao = Console.ReadLine();
+            string? duracao = Console.ReadLine();
 
             if (titulo == null || duracao == null)
             {
                 return CadastrarFilme();
             }
 
-            Filme filme = new Filme(titulo, duracao);
+            Filme filme = new Filme(titulo.ToUpper(), duracao);
 
             List<MidiaBase> json = JsonRepositorio.LerArquivo();
 
@@ -69,20 +69,20 @@ namespace App.Utils
         {
             Console.WriteLine("--------- Cadastro de Série ---------");
             Console.WriteLine("Titulo: ");
-            string titulo = Console.ReadLine();
+            string? titulo = Console.ReadLine();
 
             Console.WriteLine("Temporadas: ");
-            string temporadas = Console.ReadLine();
+            string? temporadas = Console.ReadLine();
 
             Console.WriteLine("Epsodios asistidos: ");
-            string epsodiosasistidos = Console.ReadLine();
+            string? epsodiosasistidos = Console.ReadLine();
 
             if (titulo == null || temporadas == null || epsodiosasistidos == null)
             {
                 return CadastrarSerie();
             }
 
-            Serie serie = new Serie(titulo, temporadas, epsodiosasistidos);
+            Serie serie = new Serie(titulo.ToUpper(), temporadas, epsodiosasistidos.ToUpper());
 
             List<MidiaBase> json = JsonRepositorio.LerArquivo();
 
