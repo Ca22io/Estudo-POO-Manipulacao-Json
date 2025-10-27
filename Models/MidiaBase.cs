@@ -7,8 +7,14 @@ namespace App.Models
             this.Titulo = titulo;
         }
         
-        public int Id { get; private set; }
+        public int Id { get; set; }
 
         public string? Titulo { get; private set; }
+
+        public static class IdGenerator
+        {
+            private static int _last = 0;
+            public static int Next() => Interlocked.Increment(ref _last);
+        }
     }
 }

@@ -9,6 +9,7 @@ namespace App.Models
 
         public Filme(string titulo, string duracao) : base(titulo)
         {
+            this.Id = IdGenerator.Next();
             this.DuracaoMinutos = duracao;
         }
 
