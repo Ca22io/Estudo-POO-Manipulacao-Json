@@ -1,8 +1,1 @@
-[
-  {
-    "$type": "App.Models.Filme, App",
-    "DuracaoMinutos": "130",
-    "Id": 1,
-    "Titulo": "TESTE"
-  }
-]
+[]

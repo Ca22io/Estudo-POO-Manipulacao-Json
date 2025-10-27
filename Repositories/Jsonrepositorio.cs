@@ -28,14 +28,19 @@ namespace App.Repositories
 
             string json = File.ReadAllText(CaminhoDoArquivo);
 
-            if (json.Length <= 0)
+            if (json.Length >= 0)
             {
                 return new List<MidiaBase>();
             }
 
             var dados = JsonConvert.DeserializeObject<List<MidiaBase>>(json, Settings);
 
-            return dados;
+            if (dados != null)
+            {
+                return dados;
+            }
+            
+            return new List<MidiaBase>();
 
         }
 
@@ -54,14 +59,6 @@ namespace App.Repositories
                 return $"Ocorreu um erro não tratado. Detalhes do erro: {ex}";
             }
             
-        }
-
-        public static MidiaBase ObterItem(string titulo)
-        {
-            var dados = LerArquivo();
-
-            return dados.FirstOrDefault(i => i.Titulo == titulo);
-
         }
     }
 } 
