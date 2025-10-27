@@ -1,3 +1,5 @@
+using Newtonsoft.Json;
+
 namespace App.Models
 {
     public class Filme : MidiaBase
@@ -8,6 +10,16 @@ namespace App.Models
         public Filme(string titulo, string duracao) : base(titulo)
         {
             this.DuracaoMinutos = duracao;
+        }
+
+        public static string Serealizar(Filme filme)
+        {
+            return JsonConvert.SerializeObject(filme);
+        }
+        
+        public static Filme Desserializar (string filme)
+        {
+            return JsonConvert.DeserializeObject<Filme>(filme);
         }
     }
 }

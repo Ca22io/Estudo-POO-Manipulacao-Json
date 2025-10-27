@@ -1,3 +1,5 @@
+using Newtonsoft.Json;
+
 namespace App.Models
 {
     public class Serie : MidiaBase
@@ -11,6 +13,16 @@ namespace App.Models
         {
             this.NumeroTemporadas = temporada;
             this.EpsodiosVistos = epsodio;
+        }
+
+         public static string Serealizar(Serie serie)
+        {
+            return JsonConvert.SerializeObject(serie);
+        }
+        
+        public static Serie Desserializar (string serie)
+        {
+            return JsonConvert.DeserializeObject<Serie>(serie);
         }
     }
 }
