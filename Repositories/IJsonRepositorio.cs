@@ -8,5 +8,7 @@ namespace App.Repositories
 
         abstract static string SalvarArquivo(List<MidiaBase> dados);
 
+        abstract static MidiaBase ObterItem(string titulo);
+
     }
 }

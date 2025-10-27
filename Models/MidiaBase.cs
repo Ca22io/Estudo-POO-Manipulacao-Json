@@ -7,9 +7,9 @@ namespace App.Models
             this.Titulo = titulo;
         }
         
-        public int Id { get; set; }
+        public int Id { get; protected set; }
 
-        public string? Titulo { get; private set; }
+        public string? Titulo { get; set; }
 
         public static class IdGenerator
         {

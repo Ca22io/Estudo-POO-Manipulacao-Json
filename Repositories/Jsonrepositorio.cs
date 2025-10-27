@@ -1,6 +1,5 @@
 using App.Models;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace App.Repositories
 {
@@ -55,6 +54,14 @@ namespace App.Repositories
                 return $"Ocorreu um erro não tratado. Detalhes do erro: {ex}";
             }
             
+        }
+
+        public static MidiaBase ObterItem(string titulo)
+        {
+            var dados = LerArquivo();
+
+            return dados.FirstOrDefault(i => i.Titulo == titulo);
+
         }
     }
 } 
