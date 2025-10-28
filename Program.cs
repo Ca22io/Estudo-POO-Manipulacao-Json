@@ -23,6 +23,11 @@ do
         case "4":
             Exibir.Mostrar();
             break;
+        default:
+            Console.WriteLine("Opção invalida! Tente novamente");
+            Console.WriteLine("Tecle ENTER para continuar!");
+            Console.ReadLine();
+            break;
     }
 }
 while (opcao != "0");
