@@ -11,6 +11,11 @@ namespace App.Utils
 
             var dados = JsonRepositorio.LerArquivo();
 
+            if (dados.Count <= 0)
+            {
+                Console.WriteLine("Não possui midia cadastrada.");
+            }
+
             foreach (var item in dados)
             {
                 if (item is Filme filme)
