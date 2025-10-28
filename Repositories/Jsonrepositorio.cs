@@ -15,33 +15,42 @@ namespace App.Repositories
 
         public static List<MidiaBase> LerArquivo()
         {
-
-            if (!Directory.Exists("../../../data"))
+            try
             {
-                Directory.CreateDirectory("../../../data");
-            }
+                if (!Directory.Exists("../../../data"))
+                {
+                    Directory.CreateDirectory("../../../data");
+                }
 
-            if (!File.Exists(CaminhoDoArquivo))
-            {
-                File.WriteAllText(CaminhoDoArquivo, "[]");
-            }
+                if (!File.Exists(CaminhoDoArquivo))
+                {
+                    File.WriteAllText(CaminhoDoArquivo, "[]");
+                }
 
-            string json = File.ReadAllText(CaminhoDoArquivo);
+                string json = File.ReadAllText(CaminhoDoArquivo);
 
-            if (json.Length >= 0)
-            {
+                if (json.Length <= 0)
+                {
+                    return new List<MidiaBase>();
+                }
+
+                var dados = JsonConvert.DeserializeObject<List<MidiaBase>>(json, Settings);
+
+                if (dados != null)
+                {
+                    return dados;
+                }
+
                 return new List<MidiaBase>();
             }
-
-            var dados = JsonConvert.DeserializeObject<List<MidiaBase>>(json, Settings);
-
-            if (dados != null)
+            catch (Exception ex)
             {
-                return dados;
+                Console.WriteLine($"Ocorreu um erro não tratado. Detalhes do erro: {ex}");
+                Console.WriteLine("Tecle ENTER para continuar!");
+                Console.ReadLine();
             }
             
-            return new List<MidiaBase>();
-
+            return new List<MidiaBase>() ;
         }
 
         public static string SalvarArquivo(List<MidiaBase> dados)
