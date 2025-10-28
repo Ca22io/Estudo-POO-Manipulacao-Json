@@ -16,14 +16,5 @@ namespace App.Models
             this.EpsodiosVistos = epsodio;
         }
 
-         public static string Serealizar(Serie serie)
-        {
-            return JsonConvert.SerializeObject(serie);
-        }
-        
-        public static Serie Desserializar (string serie)
-        {
-            return JsonConvert.DeserializeObject<Serie>(serie);
-        }
     }
 }
